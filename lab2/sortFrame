@@ -1,0 +1,40 @@
+import java.util.*;
+public class sortFrame{
+    static class Frame{
+        int num;
+        String data;
+        public Frame(int num,String data){
+            this.num=num;
+            this.data=data;
+        }
+    }
+    public static void sort(Frame f[]){
+        for(int i=0;i<f.length;i++){
+            for(int j=0;j<f.length-i-1;j++){
+                if(f[j].num>f[j+1].num){
+                    Frame temp=f[j];
+                    f[j]=f[j+1];
+                    f[j+1]=temp;
+                }
+            }
+        }
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter no. of frames");
+        int n=sc.nextInt();
+        Frame frames[]=new Frame[n];
+        System.out.println("Enter data");
+        for(int i=0;i<n;i++){
+            System.out.println("Enter num and data");
+            int num=sc.nextInt();
+            String data=sc.nextLine();
+            frames[i]=new Frame(num,data);
+        }
+        sort(frames);
+        for(int i=0;i<n;i++){
+            System.out.println(frames[i].num+" "+frames[i].data);
+        }
+        sc.close();
+    }
+}
